@@ -3,3 +3,8 @@ require 'slim'
 require 'sqlite3'
 require 'sinatra/reloader'
 require 'becrypt'
+
+get('/') do
+    
+    
+end
