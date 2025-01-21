@@ -1,0 +1,13 @@
+div.varor {
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div.varor div{
+    padding: 10px;
+    margin: 10px;
+    border: solid black 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
