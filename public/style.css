@@ -1,13 +1,32 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+header{
+    display: grid;
+    text-align: center;
+}
+header a{
+    text-align: right;
+    margin: 10px;
+    font-size: larger;
+}
+
 div.varor {
     display: flex;
     margin: 10px;
     padding: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 div.varor div{
     padding: 10px;
     margin: 10px;
     border: solid black 2px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+div.varor h1{
+    text-align: center;
+}
+
