@@ -42,3 +42,16 @@ div.varor h1{
     text-align: center;
 }
 
+input{
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+::placeholder{
+    color: #F0F0F0;
+}
+
+.reglog:hover{
+    color: black;
+    background-color: white;
+}
