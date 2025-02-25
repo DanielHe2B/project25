@@ -4,6 +4,7 @@ form action="login" method="POST"
     input type="text" name="username" placeholder="Enter username"
     input type="password" name="password" placeholder="Enter password"
     input class="reglog"type="submit" value="Log In!"
-
+- if flash[:fail]
+    p.notice = flash[:fail]
 h3 Don't have an account? Register 
 a href="/register" Click here

@@ -3,6 +3,6 @@ form action="users/new" method="POST"
     input type="password" name="password" placeholder="Enter password"
     input type="password" name="password_confirm" placeholder="Enter password again"
     input class="reglog"type="submit" value="Register new user"/
-
-
+- if flash[:notice]
+    p.notice = flash[:notice]
 

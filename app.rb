@@ -4,6 +4,7 @@ require 'sqlite3'
 require 'sinatra/reloader'
 require 'bcrypt'
 require_relative './model.rb'
+require 'sinatra/flash'
 
 enable :sessions
 
@@ -31,17 +32,18 @@ post('/login') do
     password=params[:password]
     db = connect_to_db('db/slutprojekt.db')
     result = db.execute("SELECT * FROM users WHERE username = ?", username).first
-    passwordDigest = result["passwordDigest"]
+    passwordDigest = result["passwordDigest"] 
     id = result["id"]
   
     if BCrypt::Password.new(passwordDigest) == password
       session[:id] = id
       @loggedin=2
       #@username= db.execute("SELECT * FROM users , WHERE id = ?", id)
-      p "plaster"
+      flash[:notice] = "Logged In"
       redirect('/')
     else
-      return slim(:errorinput)
+      flash[:fail] = "Wrong password"
+      redirect('/showlogin')
     end
 end
 
@@ -55,7 +57,8 @@ post('/users/new') do
     db = connect_to_db('db/slutprojekt.db')
     db.execute("INSERT INTO users (username, passwordDigest) VALUES (?,?)", [username, password_digest])
     redirect('/')
-
+  elsif (password == "") or (password_confirm == "") or (username == "")
+    flash[:notice] = "Please fill all the boxes"
 
   else
 

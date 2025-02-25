@@ -55,3 +55,8 @@ input{
     color: black;
     background-color: white;
 }
+
+.notice{
+    color: red;
+    position: fixed;
+}

@@ -4,10 +4,11 @@ html lang="en"
     meta charset="UTF-8"/
     meta name="viewport" content="width=device-width, initial-scale=1.0"/
     link rel="stylesheet" href="css/style.css"/
-    title Gregers webshopp
+    title Gregers Webshopp
+    link rel="shortcut icon" type="image/x-icon" href="/img/logo_telegram.png" /
   body
     header
-      h1 Gregers webshopp
+      h1 Gregers Webshopp
       nav
         a href="/" Homepage
         //-if @loggedin = 2  
@@ -15,8 +16,11 @@ html lang="en"
           h2 Välkommen, @username
         //-elsif @loggedin = 1
         a href="/showlogin" Log In
+        - if flash[:notice]
+          p.notice = flash[:notice]
     hr
-     
+    
+
   
 
     == yield
@@ -24,3 +28,5 @@ html lang="en"
   footer 
     p Mail: Greger@gmail.com    Tel: +46 07103495
     p.text-sm &copy; #{Time.now.year} Gregers webshopp. All rights reserved.
+
+script src="/public/js/main.js" /
