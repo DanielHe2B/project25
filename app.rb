@@ -58,10 +58,12 @@ post('/users/new') do
     db.execute("INSERT INTO users (username, passwordDigest) VALUES (?,?)", [username, password_digest])
     redirect('/')
   elsif (password == "") or (password_confirm == "") or (username == "")
-    flash[:notice] = "Please fill all the boxes"
+    flash[:validate] = "Please fill all the boxes"
+    redirect('/register')
 
-  else
-
+  elsif (password!=password_confirm)
+    flash[:validate] = "Please confirm the password"
+    redirect('/register')
 
   end
 end
