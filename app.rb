@@ -32,14 +32,24 @@ post('/login') do
     password=params[:password]
     db = connect_to_db('db/slutprojekt.db')
     result = db.execute("SELECT * FROM users WHERE username = ?", username).first
+    if username == "" or password == ""
+      flash[:fail] = "Please put fill all the boxes"
+      redirect('/showlogin')
+    end
+    result = db.get_first_row("SELECT username FROM users WHERE username = ?", username)
+
+    if !result
+      flash[:fail] = "Username does not exist"
+      redirect('/showlogin')    
+    end
     passwordDigest = result["passwordDigest"] 
     id = result["id"]
-  
+
     if BCrypt::Password.new(passwordDigest) == password
       session[:id] = id
       @loggedin=2
       #@username= db.execute("SELECT * FROM users , WHERE id = ?", id)
-      flash[:notice] = "Logged In"
+      flash[:notice] = "Logged In"  
       redirect('/')
     else
       flash[:fail] = "Wrong password"
@@ -51,13 +61,23 @@ post('/users/new') do
   username=params[:username]
   password=params[:password]
   password_confirm=params[:password_confirm]
+  db = connect_to_db('db/slutprojekt.db')
 
-  if (password==password_confirm)
+  result = db.get_first_row("SELECT username FROM users WHERE username = ?", username)
+
+  if result
+    flash[:validate] = "Username was taken"
+    redirect('/register')    
+  end
+
+   
+
+  if (password==password_confirm) and ((password!="") and (password_confirm!="") and username!="")
     password_digest = BCrypt::Password.create(password)
     db = connect_to_db('db/slutprojekt.db')
     db.execute("INSERT INTO users (username, passwordDigest) VALUES (?,?)", [username, password_digest])
     redirect('/')
-  elsif (password == "") or (password_confirm == "") or (username == "")
+  elsif (password == "") or (password_confirm == "") or (username == "") or ((password == "") and (password_confirm == ""))
     flash[:validate] = "Please fill all the boxes"
     redirect('/register')
 
