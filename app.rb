@@ -32,6 +32,8 @@ post('/login') do
     password=params[:password]
     db = connect_to_db('db/slutprojekt.db')
     result = db.execute("SELECT * FROM users WHERE username = ?", username).first
+    passwordDigest = result["passwordDigest"] 
+    id = result["id"]
     if username == "" or password == ""
       flash[:fail] = "Please put fill all the boxes"
       redirect('/showlogin')
@@ -42,8 +44,6 @@ post('/login') do
       flash[:fail] = "Username does not exist"
       redirect('/showlogin')    
     end
-    passwordDigest = result["passwordDigest"] 
-    id = result["id"]
 
     if BCrypt::Password.new(passwordDigest) == password
       session[:id] = id
