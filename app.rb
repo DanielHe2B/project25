@@ -11,7 +11,12 @@ enable :sessions
 @loggedin = 1
 
 get('/') do
-    
+    if session[:id]
+      db = connect_to_db('db/slutprojekt.db')
+      user = db.execute("SELECT username FROM users WHERE id = ?", session[:id]).first
+      @username = user['username'] if user
+    end
+
     return slim(:start)
 end
 
@@ -47,10 +52,10 @@ post('/login') do
 
     if BCrypt::Password.new(passwordDigest) == password
       session[:id] = id
-      @loggedin=2
       #@username= db.execute("SELECT * FROM users , WHERE id = ?", id)
       flash[:notice] = "Logged In"  
       redirect('/')
+
     else
       flash[:fail] = "Wrong password"
       redirect('/showlogin')
@@ -66,24 +71,30 @@ post('/users/new') do
   result = db.get_first_row("SELECT username FROM users WHERE username = ?", username)
 
   if result
-    flash[:validate] = "Username was taken"
+    validera("Username was taken")    
     redirect('/register')    
   end
-
-   
 
   if (password==password_confirm) and ((password!="") and (password_confirm!="") and username!="")
     password_digest = BCrypt::Password.create(password)
     db = connect_to_db('db/slutprojekt.db')
     db.execute("INSERT INTO users (username, passwordDigest) VALUES (?,?)", [username, password_digest])
+    user_id = db.last_insert_row_id
+    session[:id] = user_id
     redirect('/')
   elsif (password == "") or (password_confirm == "") or (username == "") or ((password == "") and (password_confirm == ""))
-    flash[:validate] = "Please fill all the boxes"
+    validera("Please fill all the boxes")    
     redirect('/register')
 
   elsif (password!=password_confirm)
-    flash[:validate] = "Please confirm the password"
+    validera("Please confirm the password")    
     redirect('/register')
 
   end
+end
+
+get('/logout') do
+  session.clear
+  flash[:notice] = "Du har loggats ut"
+  redirect '/'
 end

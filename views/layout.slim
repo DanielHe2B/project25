@@ -15,9 +15,15 @@ html lang="en"
           a href="" Log out
           h2 Välkommen, @username
         //-elsif @loggedin = 1
-        a href="/showlogin" Log In
-        - if flash[:notice]
-          p.notice = flash[:notice]
+        - if @username
+            a href="/logout" Log Out
+            p Välkommen, #{@username}!
+        - else
+            a href="/showlogin" Log In
+            - if flash[:notice]
+              p.notice = flash[:notice]
+
+
     hr
     
 
@@ -30,3 +36,4 @@ html lang="en"
     p.text-sm &copy; #{Time.now.year} Gregers webshopp. All rights reserved.
 
 script src="js/main.js" 
+

@@ -4,3 +4,7 @@ def connect_to_db(path)
     db.busy_timeout(1000) 
     return db
 end
+
+def validera(felmeddelande)
+    return flash[:validate] = felmeddelande
+end
