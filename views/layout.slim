@@ -11,12 +11,10 @@ html lang="en"
       h1 Gregers Webshopp
       nav
         a href="/" Homepage
-        //-if @loggedin = 2  
-          a href="" Log out
-          h2 Välkommen, @username
-        //-elsif @loggedin = 1
         - if @username
             a href="/logout" Log Out
+            a href="/shoppingcart" 
+              img id="cart" src="img/cart.jpg" alt="shopping cart" width="24" height="24"/
             p Välkommen, #{@username}!
         - else
             a href="/showlogin" Log In
