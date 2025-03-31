@@ -18,16 +18,17 @@ html lang="en"
             p Välkommen, #{@username}!
         - else
             a href="/showlogin" Log In
+            a href="/showlogin" 
+              img id="cart" src="img/cart.jpg" alt="shopping cart" width="24" height="24"/
             - if flash[:notice]
               p.notice = flash[:notice]
 
 
     hr
-    
 
   
 
-    == yield
+  == yield
   hr
   footer 
     p Mail: Greger@gmail.com    Tel: +46 07103495

@@ -1,0 +1,29 @@
+h2 Our products
+.products-container
+  - @products.each do |product| # img src=" __ här ska img/ kanske stå beroende egna bilder/ länkad bild
+    .product-item
+      img src="#{product['image']}" alt="#{product['productname']}" 
+      h3 = product['productname'] 
+      p = product['description']
+      p.price #{product['price']} kr
+    - if @username
+        form action="/add-to-cart/#{product['id']}" method="post"
+          button type="submit" Lägg till i kundvagn
+
+
+
+
+/div id="varor"
+    div
+        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
+        h2 airpods pro gen 1 
+    div 
+        img src="https://cdn.inet.se/product/688x386/6303072_0.png" 
+        h2 airpods pro gen 2
+    div
+        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
+        h2 airpods pro gen 1
+    div
+        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
+            h2 airpods pro gen 1 
+  

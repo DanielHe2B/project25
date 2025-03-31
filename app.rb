@@ -8,8 +8,6 @@ require 'sinatra/flash'
 
 enable :sessions
 
-@loggedin = 1
-
 get('/') do
     if session[:id]
       db = connect_to_db('db/slutprojekt.db')
@@ -17,7 +15,11 @@ get('/') do
       @username = user['username'] if user
     end
 
-    return slim(:start)
+    db = connect_to_db('db/slutprojekt.db')
+    @products = db.execute("SELECT * FROM productinfo")  
+    p @products
+    puts @products.length
+    return slim(:show)
 end
 
 get('/showlogin') do
@@ -47,18 +49,15 @@ post('/login') do
       failed("Username does not exist")
       redirect('/showlogin')
     end
+
+    result = db.execute("SELECT * FROM users WHERE username = ?", username).first
     passwordDigest = result["passwordDigest"] 
     id = result["id"]
-    result = db.get_first_row("SELECT username FROM users WHERE username = ?", username)
 
-    if !result
-      failed("Username does not exist")
-      redirect('/showlogin')    
-    end
-
+    
     if BCrypt::Password.new(passwordDigest) == password
       session[:id] = id
-      #@username= db.execute("SELECT * FROM users , WHERE id = ?", id)
+      @username= db.execute("SELECT * FROM users WHERE id = ?", id)
       notice("Logged In")  
       redirect('/')
 
