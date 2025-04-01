@@ -1,0 +1,20 @@
+h1 Edit the product info here!
+form action="/product/1/w/edit" method="POST"
+  div.form-group
+    label for="new_productname" New productname
+    input type="text" id="productname" name="productname" 
+    
+  div.form-group
+    label for="new_price" New price (kr)
+    input type="number" id="price" name="price" step="0.01" min="0" 
+  
+  div.form-group
+    label for="new_description" New description
+    textarea id="description" name="description" rows="4" 
+
+  div.form-group
+    label for="new_image" Picture URL
+    input type="text" id="image" name="image" placeholder="https://example/picture.jpg" 
+  
+  div.form-group
+    button type="submit" Edit info

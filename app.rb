@@ -8,7 +8,9 @@ require 'sinatra/flash'
 
 enable :sessions
 
-get('/') do
+include Model
+
+get('/') do #visar hemsidan
     if session[:id]
       db = connect_to_db('db/slutprojekt.db')
       user = db.execute("SELECT username FROM users WHERE id = ?", session[:id]).first
@@ -17,8 +19,6 @@ get('/') do
 
     db = connect_to_db('db/slutprojekt.db')
     @products = db.execute("SELECT * FROM productinfo")  
-    p @products
-    puts @products.length
     return slim(:show)
 end
 
@@ -100,6 +100,64 @@ end
 
 get('/logout') do
   session.clear
-  notice("Du har loggats ut")
-  redirect '/'
+  notice("You have logged out")
+  redirect('/')
+end
+
+get('/product_new') do
+
+  return slim(:new)
+end
+
+post('/products/create') do
+  # Kontrollera om användaren är inloggad och har admin-rättigheter
+  #p @username.to_s.downcase
+  #redirect '/' unless @username.to_s.downcase == "admin"
+  
+  # Hämta formulärdata
+  productname = params['productname']
+  description = params['description']
+  price = params['price'].to_f
+  image = params['image']
+  
+  # Lägg till i databasen (exempel med SQLite)
+  db = connect_to_db('db/slutprojekt.db')
+  db.execute("INSERT INTO productinfo (productname, price, description, image) VALUES (?, ?, ?, ?)", [productname, price, description, image])
+  
+  notice("Product successfully added")
+  redirect('/')
+end
+
+post('/product/:id/delete') do
+  # Check if user is logged in and is admin
+  #redirect '/login' unless session[:user_id]
+  
+  id = params['id']
+  
+  # Delete the product from database
+  db = connect_to_db('db/slutprojekt.db')
+  db.execute("DELETE FROM productinfo WHERE id = ?", [id])
+  
+  notice("Product successfully removed")
+  redirect('/')
+end
+
+get('/product_edit') do
+  db = connect_to_db('db/slutprojekt.db')
+  @products = db.execute("SELECT * FROM productinfo")  
+  return slim(:edit)
+end
+
+post('/product/:id/:new_productname/edit') do
+  productname = params['new_productname']
+  description = params['new_description']
+  price = params['new_price'].to_f
+  image = params['new_image']
+  id = params['id']
+
+  db = connect_to_db('db/slutprojekt.db')
+  db.execute("UPDATE productinfo SET productname = ?, price = ?, description = ?, image = ? WHERE id = ?",
+    [productname, price, description, image, id])  
+  notice("Productinfo successfully changed")
+  redirect('/')
 end

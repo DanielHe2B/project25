@@ -26,8 +26,8 @@ header a:hover{
     color: black;
 }
 
-div#varor {
-    display: grid;
+div.varor {
+    display: flex;
     margin: 10px;
     padding: 10px;
 }
@@ -39,15 +39,12 @@ div#varor div{
     border: solid black 2px;
 }
 
-div#varor h1{
-    text-align: center;
-}
-
 input{
     padding: 5px;
     background-color: black;
     color: white;
 }
+
 ::placeholder{
     color: #F0F0F0;
 }
@@ -61,4 +58,11 @@ input{
     color: red;
     position: fixed;
 }
+
+.products-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
 

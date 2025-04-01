@@ -19,9 +19,13 @@ html lang="en"
         - else
             a href="/showlogin" Log In
             a href="/showlogin" 
-              img id="cart" src="img/cart.jpg" alt="shopping cart" width="24" height="24"/
-            - if flash[:notice]
-              p.notice = flash[:notice]
+              img id="cart" src="img/cart.jpg" alt="shopping cart" width="24" height="24"/ 
+        - if flash[:notice]
+            p.notice = flash[:notice]
+        - if @username.to_s.downcase == "admin"
+          a href="/product_new" Add product
+        
+
 
 
     hr

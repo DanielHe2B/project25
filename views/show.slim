@@ -1,29 +1,24 @@
 h2 Our products
-.products-container
+div clas="varor"
   - @products.each do |product| # img src=" __ här ska img/ kanske stå beroende egna bilder/ länkad bild
     .product-item
       img src="#{product['image']}" alt="#{product['productname']}" 
       h3 = product['productname'] 
-      p = product['description']
       p.price #{product['price']} kr
+      p = product['description']
     - if @username
-        form action="/add-to-cart/#{product['id']}" method="post"
-          button type="submit" Lägg till i kundvagn
+        form action="/shoppingcart" method="POST"
+          button type="submit" Add to cart
+    - if @username.to_s.downcase == "admin"
+        form action="/product/#{product['id']}/delete" method="POST"
+          button type="submit" Remove product
+        form action="/product_edit"
+          button type="submit" Edit info
+    hr
 
 
 
 
-/div id="varor"
-    div
-        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
-        h2 airpods pro gen 1 
-    div 
-        img src="https://cdn.inet.se/product/688x386/6303072_0.png" 
-        h2 airpods pro gen 2
-    div
-        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
-        h2 airpods pro gen 1
-    div
-        img src="https://cdn.inet.se/product/688x386/6303072_1.png" 
-            h2 airpods pro gen 1 
+
+
   

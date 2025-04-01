@@ -1,0 +1,20 @@
+h1 Add a product here!
+form action="/products/create" method="POST"
+  div.form-group
+    label for="productname" Product name
+    input type="text" id="productname" name="productname" required="required"
+    
+  div.form-group
+    label for="price" Price (kr)
+    input type="number" id="price" name="price" step="0.01" min="0" required="required"
+  
+  div.form-group
+    label for="description" Description
+    textarea id="description" name="description" rows="4" required="required"
+
+  div.form-group
+    label for="image" Picture URL
+    input type="text" id="image" name="image" placeholder="https://example/picture.jpg" required="required"
+  
+  div.form-group
+    button type="submit" Add product
