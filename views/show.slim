@@ -7,13 +7,15 @@ div clas="varor"
       p.price #{product['price']} kr
       p = product['description']
     - if @username
-        form action="/shoppingcart" method="POST"
+        form action="/add_to_cart/#{product['id']}" method="POST"
+          input type="number" name="quantity" value="1" min="1" max="10"
           button type="submit" Add to cart
     - if @username.to_s.downcase == "admin"
         form action="/product/#{product['id']}/delete" method="POST"
           button type="submit" Remove product
-        form action="/product_edit"
-          button type="submit" Edit info
+        form action="/product/edit/#{product['id']}" method="GET"
+          button type="submit" Edit productinfo
+
     hr
 
 

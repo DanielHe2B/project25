@@ -1,0 +1,35 @@
+h2 Your Shopping Cart
+
+- if @cart_items.empty?
+  p Your cart is empty.
+- else
+  table.cart-table
+    thead
+      tr
+        th Product
+        th Price
+        th Quantity
+        th Total
+        th
+    tbody
+      - @cart_items.each do |item|
+        tr
+          td
+            img src="#{item['image']}" alt="#{item['productname']}" width="50"
+            = item['productname']
+          td #{item['price']} kr
+          td
+            form action="/update-cart/#{item['id']}" method="POST"
+              input type="number" name="quantity" value="#{item['quantity']}" min="1"
+              button type="submit" Update
+          td #{item['price'] * item['quantity']} kr
+          td
+            form action="/remove-from-cart/#{item['id']}" method="POST"
+              button type="submit" class="delete-btn" Remove
+    tfoot
+      tr
+        td colspan="3" Total:
+        td #{@total} kr
+        td
+  
+  a href="/checkout" class="checkout-btn" Proceed to Checkout
