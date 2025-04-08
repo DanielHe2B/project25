@@ -1,0 +1,7 @@
+h1 Users:
+hr
+- @users.each do |user| 
+    h2 #{user['username']}
+    form action="/user/#{user['id']}/delete" method="POST"
+        button type="submit" Remove user
+    hr

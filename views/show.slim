@@ -2,7 +2,7 @@ h2 Our products
 div clas="varor"
   - @products.each do |product| # img src=" __ här ska img/ kanske stå beroende egna bilder/ länkad bild
     .product-item
-      img src="#{product['image']}" alt="#{product['productname']}" 
+      img src="#{product['image']}" alt="#{product['productname']}" style="max-width: 280px;"
       h3 = product['productname'] 
       p.price #{product['price']} kr
       p = product['description']

@@ -15,7 +15,7 @@ html lang="en"
             a href="/logout" Log Out
             a href="/shoppingcart" 
               img id="cart" src="img/cart.jpg" alt="shopping cart" width="24" height="24"/
-            p Välkommen, #{@username}!
+            p Welcome, #{@username}!
         - else
             a href="/showlogin" Log In
             a href="/showlogin" 
@@ -24,7 +24,8 @@ html lang="en"
             p.notice = flash[:notice]
         - if @username.to_s.downcase == "admin"
           a href="/product_new" Add product
-        
+          a href="/accounts" All accounts
+
 
 
 

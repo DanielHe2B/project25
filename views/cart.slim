@@ -17,19 +17,19 @@ h2 Your Shopping Cart
           td
             img src="#{item['image']}" alt="#{item['productname']}" width="50"
             = item['productname']
-          td #{item['price']} kr
+          th #{item['price'].to_i} kr
           td
             form action="/update-cart/#{item['id']}" method="POST"
               input type="number" name="quantity" value="#{item['quantity']}" min="1"
               button type="submit" Update
-          td #{item['price'] * item['quantity']} kr
+          td #{item['price'].to_i * item['quantity']} kr
           td
             form action="/remove-from-cart/#{item['id']}" method="POST"
               button type="submit" class="delete-btn" Remove
     tfoot
       tr
         td colspan="3" Total:
-        td #{@total} kr
-        td
+         #{@total} kr
+        
   
   a href="/checkout" class="checkout-btn" Proceed to Checkout
