@@ -1,20 +1,19 @@
 require 'sinatra'
-require 'slim'                # @note Template engine for views
-require 'sqlite3'             # @note SQLite3 database connector
-require 'sinatra/reloader'    # @note Auto-reload code during development
-require 'bcrypt'              # @note Library for password hashing
-require_relative './model.rb' # @note Imports model methods from external file
-require 'sinatra/flash'       # @note Enables flash messages for notifications
+require 'slim'                
+require 'sqlite3'           
+require 'sinatra/reloader'    
+require 'bcrypt'             
+require_relative './model.rb'
+require 'sinatra/flash'    
 
-enable :sessions             # @note Enables sessions for user authentication
+enable :sessions             
 
-include Model                # @note Includes methods from Model module
+include Model             
 
-##
-# @before_filter Checks authentication and authorization before processing routes.
+# Before each request:
 # - Allows guest access to public routes
 # - Requires login for private routes
-# - Requires admin access for admin-specific routes
+# - Requires admin access for admin-only routes
 before do
   public_routes = ['/', '/showlogin', '/login', '/register', '/users', '/users/new']
   admin_routes = ['/accounts', '/product/new', '/products/create', '/product/edit']
@@ -36,34 +35,37 @@ before do
   end
 end
 
-##
-# @route GET /
-# @return [Slim::Template] Renders the home page with product list
+# Display Home Page
+#
+# @see Model#get_username
+# @see Model#get_all_products
 get('/') do
   @username = get_username(session[:id])
   @products = get_all_products()  
   slim(:index)
 end
 
-##
-# @route GET /showlogin
-# @return [Slim::Template] Renders the login form
+# Display Login Form
+#
 get('/showlogin') do
   slim(:login)
 end
 
-##
-# @route GET /register
-# @return [Slim::Template] Renders the registration form
+# Display Registration Form
+#
 get('/register') do
   slim(:register)
 end
 
-##
-# @route POST /login
-# @param [String] username
-# @param [String] password
-# @return [Redirect] Redirects to home if login successful, else shows error
+# Attempt to Login
+#
+# @param [String] username, the username
+# @param [String] password, the passwornd
+#
+# @see Model#notice
+# @see Model#failed
+# @see Model#check_login_attempts
+# @see Model#authenticate_user
 post('/login') do
   username = params[:username]
   password = params[:password]
@@ -91,9 +93,14 @@ post('/login') do
   end
 end
 
-##
-# @route POST /users
-# @return [Redirect] Redirects to home if registration is successful, else returns to register
+# Register New User
+#
+# @param [String] username, the username
+# @param [String] password, the password
+# @param [String] password_confirm, the password
+#
+# @see Model#register_user
+# @see Model#validera
 post('/users') do
   username = params[:username]
   password = params[:password]
@@ -110,21 +117,22 @@ post('/users') do
   end
 end
 
-##
-# @route GET /accounts
-# @note Admin-only route
-# @return [Slim::Template] Renders user account overview
+# Display All User Accounts (Admin-only)
+#
+# @see Model#get_all_users
+# @see Model#get_username
 get('/accounts') do 
   @users = get_all_users()
   @username = get_username(session[:id])
   slim(:show_accounts)
 end
 
-##
-# @route POST /user/:id/delete
-# @note Admin-only route
-# @param [String] id - ID of user to delete
-# @return [Redirect] Redirects to accounts page
+# Delete a User (Admin-only)
+#
+# @param [Integer] id, User ID
+#
+# @see Model#delete_user
+# @see Model#notice
 post('/user/:id/delete') do 
   id = params['id']
   delete_user(id)
@@ -132,28 +140,33 @@ post('/user/:id/delete') do
   redirect('/accounts')
 end
 
-##
-# @route GET /logout
-# @return [Redirect] Clears session and redirects to home
+# Logout User
+#
+# @see Model#notice
 get('/logout') do
   session.clear
   notice("You have logged out")
   redirect('/')
 end
 
-##
-# @route GET /product_new
-# @note Admin-only route
-# @return [Slim::Template] Renders product creation form
+# Display New Product Form (Admin-only)
+#
+# @see Model#get_username
 get('/product/new') do
   @username = get_username(session[:id])
   slim(:new)
 end
 
-##
-# @route POST /products
-# @note Admin-only route
-# @return [Redirect] Redirects to home after creating product
+# Create New Product (Admin-only)
+#
+# @param [String] productname, name of the new product
+# @param [String] description, the description
+# @param [Float] price, the price
+# @param [String] image, the image URL
+#
+# @see Model#get_username
+# @see Model#create_product
+# @see Model#notice
 post('/product') do
   @username = get_username(session[:id])
   productname = params['productname']
@@ -167,10 +180,12 @@ post('/product') do
   redirect('/')
 end
 
-##
-# @route POST /product/:id/delete
-# @note Admin-only route
-# @return [Redirect] Deletes product and redirects to home
+# Delete a Product (Admin-only)
+#
+# @param [Integer] id, Product ID
+#
+# @see Model#delete_product
+# @see Model#notice
 post('/product/:id/delete') do
   id = params['id']
   delete_product(id)
@@ -179,20 +194,27 @@ post('/product/:id/delete') do
   redirect('/')
 end
 
-##
-# @route GET /product/edit/:id
-# @note Admin-only route
-# @return [Slim::Template] Renders product edit form
+# Display Edit Product Form (Admin-only)
+#
+# @param [Integer] id, Product ID
+#
+# @see Model#get_username
 get('/product/:id/edit') do
   @username = get_username(session[:id])
   @id = params[:id]
   slim(:edit)
 end
 
-##
-# @route POST /product/:id/update
-# @note Admin-only route
-# @return [Redirect] Updates product and redirects to home
+# Update a Product (Admin-only)
+#
+# @param [Integer] id, the ID of the product to update
+# @param [String] new_productname, the updated name of the product
+# @param [String] new_description, the updated description of the product
+# @param [Float] new_price, the updated price of the product
+# @param [String] new_image, the updated URL or path to the product image
+#
+# @see Model#update_product
+# @see Model#notice
 post('/product/:id/update') do
   productname = params['new_productname']
   description = params['new_description']
@@ -206,9 +228,11 @@ post('/product/:id/update') do
   redirect('/')
 end
 
-##
-# @route GET /shoppingcart
-# @return [Slim::Template] Shows shopping cart if logged in
+# Display Shopping Cart
+#
+# @see Model#get_username
+# @see Model#get_cart_items
+# @see Model#calculate_cart_total
 get('/shoppingcart') do
   redirect '/showlogin' unless session[:id]
   
@@ -216,13 +240,16 @@ get('/shoppingcart') do
   @cart_items = get_cart_items(session[:id])
   @total = calculate_cart_total(@cart_items)
   
-  slim(:cart)
+  slim(:show_cart)
 end
 
-##
-# @route POST /add_to_cart/:id
-# @param [String] id - Product ID
-# @return [Redirect] Adds product to cart and redirects home
+# Add Product to Cart
+#
+# @param [Integer] id, Product ID
+# @param [Integer] quantity, Quantity of the product
+#
+# @see Model#add_to_cart
+# @see Model#notice
 post('/add_to_cart/:id') do
   redirect '/showlogin' unless session[:id]
   
@@ -235,10 +262,13 @@ post('/add_to_cart/:id') do
   redirect('/')
 end
 
-##
-# @route POST /update-cart/:id
-# @param [String] id - Cart item ID
-# @return [Redirect] Updates item quantity in cart
+# Update Quantity in Cart
+#
+# @param [Integer] id, Cart item ID
+# @param [Integer] quantity, Quantity of a product
+#
+# @see Model#update_cart_item
+# @see Model#notice
 post('/update-cart/:id') do
   redirect '/showlogin' unless session[:id]
   
@@ -250,10 +280,12 @@ post('/update-cart/:id') do
   redirect('/shoppingcart')
 end
 
-##
-# @route POST /remove-from-cart/:id
-# @param [String] id - Cart item ID
-# @return [Redirect] Removes item from cart
+# Remove Item from Cart
+#
+# @param [Integer] id, Cart item ID
+#
+# @see Model#remove_from_cart
+# @see Model#notice
 post('/remove-from-cart/:id') do
   redirect '/showlogin' unless session[:id]
   
