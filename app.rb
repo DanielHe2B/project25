@@ -145,7 +145,7 @@ end
 # @route GET /product_new
 # @note Admin-only route
 # @return [Slim::Template] Renders product creation form
-get('/product_new') do
+get('/product/new') do
   @username = get_username(session[:id])
   slim(:new)
 end
@@ -183,7 +183,7 @@ end
 # @route GET /product/edit/:id
 # @note Admin-only route
 # @return [Slim::Template] Renders product edit form
-get('/product/edit/:id') do
+get('/product/:id/edit') do
   @username = get_username(session[:id])
   @id = params[:id]
   slim(:edit)
