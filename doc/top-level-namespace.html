@@ -199,7 +199,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__product_edit__id-instance_method" title="#GET /product/edit/:id (instance method)">#<strong>GET /product/edit/:id</strong>  &#x21d2; Slim::Template </a>
+      <a href="top-level-namespace.html#GET__product__id_edit-instance_method" title="#GET /product/:id/edit (instance method)">#<strong>GET /product/:id/edit</strong>  &#x21d2; Slim::Template </a>
     
 
     
@@ -223,7 +223,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__product_new-instance_method" title="#GET /product_new (instance method)">#<strong>GET /product_new</strong>  &#x21d2; Slim::Template </a>
+      <a href="top-level-namespace.html#GET__product_new-instance_method" title="#GET /product/new (instance method)">#<strong>GET /product/new</strong>  &#x21d2; Slim::Template </a>
     
 
     
@@ -367,6 +367,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="top-level-namespace.html#POST__product-instance_method" title="#POST /product (instance method)">#<strong>POST /product</strong>  &#x21d2; Redirect </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Redirects to home after creating product.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="top-level-namespace.html#POST__product__id_delete-instance_method" title="#POST /product/:id/delete (instance method)">#<strong>POST /product/:id/delete</strong>  &#x21d2; Redirect </a>
     
 
@@ -407,30 +431,6 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Updates product and redirects to home.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="top-level-namespace.html#POST__products-instance_method" title="#POST /products (instance method)">#<strong>POST /products</strong>  &#x21d2; Redirect </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Redirects to home after creating product.</p>
 </div></span>
   
 </li>
@@ -811,9 +811,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="GET__product_edit__id-instance_method">
+  <h3 class="signature " id="GET__product__id_edit-instance_method">
   
-    #<strong>GET /product/edit/:id</strong>  &#x21d2; <tt>Slim::Template</tt> 
+    #<strong>GET /product/:id/edit</strong>  &#x21d2; <tt>Slim::Template</tt> 
   
 
   
@@ -873,7 +873,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'app.rb', line 186</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/edit/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/:id/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:edit</span><span class='rparen'>)</span>
@@ -886,7 +886,7 @@
       <div class="method_details ">
   <h3 class="signature " id="GET__product_new-instance_method">
   
-    #<strong>GET /product_new</strong>  &#x21d2; <tt>Slim::Template</tt> 
+    #<strong>GET /product/new</strong>  &#x21d2; <tt>Slim::Template</tt> 
   
 
   
@@ -945,7 +945,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'app.rb', line 148</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product_new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:new</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1381,6 +1381,93 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="POST__product-instance_method">
+  
+    #<strong>POST /product</strong>  &#x21d2; <tt>Redirect</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Admin-only route</p>
+</div>
+  </div>
+
+
+<p>Returns Redirects to home after creating product.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Redirect</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Redirects to home after creating product</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app.rb', line 157</span>
+
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_productname'>productname</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>productname</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_price'>price</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>price</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+  <span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>image</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  
+  <span class='id identifier rubyid_create_product'>create_product</span><span class='lparen'>(</span><span class='id identifier rubyid_productname'>productname</span><span class='comma'>,</span> <span class='id identifier rubyid_description'>description</span><span class='comma'>,</span> <span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_notice'>notice</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Product successfully added</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="POST__product__id_delete-instance_method">
   
     #<strong>POST /product/:id/delete</strong>  &#x21d2; <tt>Redirect</tt> 
@@ -1537,93 +1624,6 @@
   <span class='id identifier rubyid_update_product'>update_product</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_productname'>productname</span><span class='comma'>,</span> <span class='id identifier rubyid_description'>description</span><span class='comma'>,</span> <span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='rparen'>)</span>
   
   <span class='id identifier rubyid_notice'>notice</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Productinfo successfully changed</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="POST__products-instance_method">
-  
-    #<strong>POST /products</strong>  &#x21d2; <tt>Redirect</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-  <div class="note notetag">
-    <strong>Note:</strong>
-    <div class='inline'>
-<p>Admin-only route</p>
-</div>
-  </div>
-
-
-<p>Returns Redirects to home after creating product.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Redirect</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Redirects to home after creating product</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 157</span>
-
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_productname'>productname</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>productname</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_price'>price</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>price</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
-  <span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>image</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-  
-  <span class='id identifier rubyid_create_product'>create_product</span><span class='lparen'>(</span><span class='id identifier rubyid_productname'>productname</span><span class='comma'>,</span> <span class='id identifier rubyid_description'>description</span><span class='comma'>,</span> <span class='id identifier rubyid_price'>price</span><span class='comma'>,</span> <span class='id identifier rubyid_image'>image</span><span class='rparen'>)</span>
-  
-  <span class='id identifier rubyid_notice'>notice</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Product successfully added</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2005,7 +2005,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 24 00:08:32 2025 by
+  Generated on Mon Apr 28 20:26:14 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.2).
 </div>

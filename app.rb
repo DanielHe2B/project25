@@ -17,12 +17,12 @@ include Model                # @note Includes methods from Model module
 # - Requires admin access for admin-specific routes
 before do
   public_routes = ['/', '/showlogin', '/login', '/register', '/users', '/users/new']
-  admin_routes = ['/accounts', '/product_new', '/products/create', '/product/edit']
+  admin_routes = ['/accounts', '/product/new', '/products/create', '/product/edit']
 
   if request.request_method == "POST" && (request.path_info == "/users" || request.path_info == "/users/new")
     pass
   elsif !public_routes.include?(request.path_info) && !session[:id]
-    notice("Log in to access this site")
+    notice("Unable to reach this site, try logging in")
     redirect('/showlogin')
   elsif admin_routes.any? { |route| request.path_info.start_with?(route) } ||
         (request.request_method == "POST" && 
@@ -154,7 +154,7 @@ end
 # @route POST /products
 # @note Admin-only route
 # @return [Redirect] Redirects to home after creating product
-post('/products') do
+post('/product') do
   @username = get_username(session[:id])
   productname = params['productname']
   description = params['description']
