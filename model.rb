@@ -7,6 +7,7 @@ module Model
   def connect_to_db(db_path)
     db = SQLite3::Database.new(db_path)
     db.results_as_hash = true
+    db
   end
 
   # Retrieves the current user based on session ID.

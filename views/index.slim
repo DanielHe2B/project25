@@ -11,9 +11,9 @@ div clas="varor"
           input type="number" name="quantity" value="1" min="1" max="10"
           button type="submit" Add to cart
     - if @username.to_s.downcase == "admin"
-        form action="/product/#{product['id']}/delete" method="POST"
+        form action="/products/#{product['id']}/delete" method="POST"
           button type="submit" Remove product
-        form action="/product/#{product['id']}/edit" method="GET"
+        form action="/products/#{product['id']}/edit" method="GET"
           button type="submit" Edit productinfo
 
     hr

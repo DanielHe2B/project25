@@ -127,7 +127,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__accounts-instance_method" title="#GET /accounts (instance method)">#<strong>GET /accounts</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#GET__cart-instance_method" title="#GET /cart (instance method)">#<strong>GET /cart</strong>  &#x21d2; Object </a>
     
 
     
@@ -142,7 +142,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Display All User Accounts (Admin-only).</p>
+<p>Display Shopping Cart.</p>
 </div></span>
   
 </li>
@@ -175,7 +175,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__product__id_edit-instance_method" title="#GET /product/:id/edit (instance method)">#<strong>GET /product/:id/edit</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#GET__products__id_edit-instance_method" title="#GET /products/:id/edit (instance method)">#<strong>GET /products/:id/edit</strong>  &#x21d2; Object </a>
     
 
     
@@ -199,7 +199,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__product_new-instance_method" title="#GET /product/new (instance method)">#<strong>GET /product/new</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#GET__products_new-instance_method" title="#GET /products/new (instance method)">#<strong>GET /products/new</strong>  &#x21d2; Object </a>
     
 
     
@@ -247,30 +247,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#GET__shoppingcart-instance_method" title="#GET /shoppingcart (instance method)">#<strong>GET /shoppingcart</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Display Shopping Cart.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="top-level-namespace.html#GET__showlogin-instance_method" title="#GET /showlogin (instance method)">#<strong>GET /showlogin</strong>  &#x21d2; Object </a>
     
 
@@ -287,6 +263,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Display Login Form.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="top-level-namespace.html#GET__users-instance_method" title="#GET /users (instance method)">#<strong>GET /users</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Display All User Accounts (Admin-only).</p>
 </div></span>
   
 </li>
@@ -343,7 +343,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#POST__product-instance_method" title="#POST /product (instance method)">#<strong>POST /product</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#POST__products-instance_method" title="#POST /products (instance method)">#<strong>POST /products</strong>  &#x21d2; Object </a>
     
 
     
@@ -367,7 +367,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#POST__product__id_delete-instance_method" title="#POST /product/:id/delete (instance method)">#<strong>POST /product/:id/delete</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#POST__products__id_delete-instance_method" title="#POST /products/:id/delete (instance method)">#<strong>POST /products/:id/delete</strong>  &#x21d2; Object </a>
     
 
     
@@ -391,7 +391,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="top-level-namespace.html#POST__product__id_update-instance_method" title="#POST /product/:id/update (instance method)">#<strong>POST /product/:id/update</strong>  &#x21d2; Object </a>
+      <a href="top-level-namespace.html#POST__products__id_update-instance_method" title="#POST /products/:id/update (instance method)">#<strong>POST /products/:id/update</strong>  &#x21d2; Object </a>
     
 
     
@@ -555,14 +555,14 @@
       <pre class="lines">
 
 
+41
 42
 43
 44
-45
-46</pre>
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 41</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -575,9 +575,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="GET__accounts-instance_method">
+  <h3 class="signature " id="GET__cart-instance_method">
   
-    #<strong>GET /accounts</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>GET /cart</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -586,7 +586,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Display All User Accounts (Admin-only)</p>
+<p>Display Shopping Cart</p>
 
 
   </div>
@@ -597,9 +597,11 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>Model#get_all_users</li>
-    
       <li>Model#get_username</li>
+    
+      <li>Model#get_cart_items</li>
+    
+      <li>Model#calculate_cart_total</li>
     
   </ul>
 
@@ -611,19 +613,27 @@
       <pre class="lines">
 
 
-124
-125
-126
-127
-128</pre>
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 235</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/accounts</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
-  <span class='ivar'>@users</span> <span class='op'>=</span> <span class='id identifier rubyid_get_all_users'>get_all_users</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cart</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_redirect'>redirect</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+  
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:show_accounts</span><span class='rparen'>)</span>
+  <span class='ivar'>@cart_items</span> <span class='op'>=</span> <span class='id identifier rubyid_get_cart_items'>get_cart_items</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@total</span> <span class='op'>=</span> <span class='id identifier rubyid_calculate_cart_total'>calculate_cart_total</span><span class='lparen'>(</span><span class='ivar'>@cart_items</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:show_cart</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -665,14 +675,14 @@
       <pre class="lines">
 
 
+145
 146
 147
 148
-149
-150</pre>
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 145</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/logout</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
@@ -685,9 +695,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="GET__product__id_edit-instance_method">
+  <h3 class="signature " id="GET__products__id_edit-instance_method">
   
-    #<strong>GET /product/:id/edit</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>GET /products/:id/edit</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -739,16 +749,16 @@
       <pre class="lines">
 
 
+201
 202
 203
 204
-205
-206</pre>
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 202</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 201</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/:id/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products/:id/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:edit</span><span class='rparen'>)</span>
@@ -759,9 +769,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="GET__product_new-instance_method">
+  <h3 class="signature " id="GET__products_new-instance_method">
   
-    #<strong>GET /product/new</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>GET /products/new</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -793,15 +803,15 @@
       <pre class="lines">
 
 
+154
 155
 156
-157
-158</pre>
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 154</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:new</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -838,81 +848,15 @@
       <pre class="lines">
 
 
+55
 56
-57
-58</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 55</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/register</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:register</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="GET__shoppingcart-instance_method">
-  
-    #<strong>GET /shoppingcart</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Display Shopping Cart</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li>Model#get_username</li>
-    
-      <li>Model#get_cart_items</li>
-    
-      <li>Model#calculate_cart_total</li>
-    
-  </ul>
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-236
-237
-238
-239
-240
-241
-242
-243
-244</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 236</span>
-
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/shoppingcart</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_redirect'>redirect</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
-  
-  <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='ivar'>@cart_items</span> <span class='op'>=</span> <span class='id identifier rubyid_get_cart_items'>get_cart_items</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='ivar'>@total</span> <span class='op'>=</span> <span class='id identifier rubyid_calculate_cart_total'>calculate_cart_total</span><span class='lparen'>(</span><span class='ivar'>@cart_items</span><span class='rparen'>)</span>
-  
-  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:show_cart</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -947,15 +891,71 @@
       <pre class="lines">
 
 
+49
 50
-51
-52</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 49</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:login</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="GET__users-instance_method">
+  
+    #<strong>GET /users</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Display All User Accounts (Admin-only)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Model#get_all_users</li>
+    
+      <li>Model#get_username</li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app.rb', line 123</span>
+
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/users</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
+  <span class='ivar'>@users</span> <span class='op'>=</span> <span class='id identifier rubyid_get_all_users'>get_all_users</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:show_users</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1035,6 +1035,7 @@
       <pre class="lines">
 
 
+252
 253
 254
 255
@@ -1044,11 +1045,10 @@
 259
 260
 261
-262
-263</pre>
+262</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 253</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 252</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/add_to_cart/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_redirect'>redirect</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
@@ -1143,6 +1143,7 @@
       <pre class="lines">
 
 
+68
 69
 70
 71
@@ -1167,11 +1168,10 @@
 90
 91
 92
-93
-94</pre>
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 68</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1205,9 +1205,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="POST__product-instance_method">
+  <h3 class="signature " id="POST__products-instance_method">
   
-    #<strong>POST /product</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>POST /products</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1311,6 +1311,7 @@
       <pre class="lines">
 
 
+169
 170
 171
 172
@@ -1321,13 +1322,12 @@
 177
 178
 179
-180
-181</pre>
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 169</span>
 
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='ivar'>@username</span> <span class='op'>=</span> <span class='id identifier rubyid_get_username'>get_username</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_productname'>productname</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>productname</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1345,9 +1345,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="POST__product__id_delete-instance_method">
+  <h3 class="signature " id="POST__products__id_delete-instance_method">
   
-    #<strong>POST /product/:id/delete</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>POST /products/:id/delete</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1401,18 +1401,18 @@
       <pre class="lines">
 
 
+188
 189
 190
 191
 192
 193
-194
-195</pre>
+194</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 188</span>
 
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/:id/delete</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products/:id/delete</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_delete_product'>delete_product</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   
@@ -1425,9 +1425,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="POST__product__id_update-instance_method">
+  <h3 class="signature " id="POST__products__id_update-instance_method">
   
-    #<strong>POST /product/:id/update</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>POST /products/:id/update</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1545,6 +1545,7 @@
       <pre class="lines">
 
 
+217
 218
 219
 220
@@ -1555,13 +1556,12 @@
 225
 226
 227
-228
-229</pre>
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 218</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 217</span>
 
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/product/:id/update</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/products/:id/update</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_productname'>productname</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_productname</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_description'>description</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_price'>price</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_price</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
@@ -1635,17 +1635,17 @@
       <pre class="lines">
 
 
+288
 289
 290
 291
 292
 293
 294
-295
-296</pre>
+295</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 288</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/remove-from-cart/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_redirect'>redirect</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
@@ -1733,6 +1733,7 @@
       <pre class="lines">
 
 
+271
 272
 273
 274
@@ -1741,11 +1742,10 @@
 277
 278
 279
-280
-281</pre>
+280</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 272</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 271</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/update-cart/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_redirect'>redirect</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showlogin</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
@@ -1819,15 +1819,15 @@
       <pre class="lines">
 
 
+135
 136
 137
 138
 139
-140
-141</pre>
+140</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 135</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/user/:id/delete</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
   <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1929,6 +1929,7 @@
       <pre class="lines">
 
 
+103
 104
 105
 106
@@ -1942,11 +1943,10 @@
 114
 115
 116
-117
-118</pre>
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 103</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/users</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1973,7 +1973,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 28 21:10:26 2025 by
+  Generated on Sun May  4 19:46:45 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.2).
 </div>

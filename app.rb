@@ -16,7 +16,7 @@ include Model
 # - Requires admin access for admin-only routes
 before do
   public_routes = ['/', '/showlogin', '/login', '/register', '/users', '/users/new']
-  admin_routes = ['/accounts', '/product/new', '/products/create', '/product/edit']
+  admin_routes = ['/accounts', '/products/new', '/products/create', '/products/edit']
 
   if request.request_method == "POST" && (request.path_info == "/users" || request.path_info == "/users/new")
     pass
@@ -25,8 +25,7 @@ before do
     redirect('/showlogin')
   elsif admin_routes.any? { |route| request.path_info.start_with?(route) } ||
         (request.request_method == "POST" && 
-         (request.path_info.include?('/product/') || 
-          request.path_info.include?('/products/') || 
+         (request.path_info.include?('/products/') || 
           request.path_info.start_with?('/user/')))
     unless is_admin?(session[:id])
       notice("Admin access required")
@@ -121,10 +120,10 @@ end
 #
 # @see Model#get_all_users
 # @see Model#get_username
-get('/accounts') do 
+get('/users') do 
   @users = get_all_users()
   @username = get_username(session[:id])
-  slim(:show_accounts)
+  slim(:show_users)
 end
 
 # Delete a User (Admin-only)
@@ -152,7 +151,7 @@ end
 # Display New Product Form (Admin-only)
 #
 # @see Model#get_username
-get('/product/new') do
+get('/products/new') do
   @username = get_username(session[:id])
   slim(:new)
 end
@@ -167,7 +166,7 @@ end
 # @see Model#get_username
 # @see Model#create_product
 # @see Model#notice
-post('/product') do
+post('/products') do
   @username = get_username(session[:id])
   productname = params['productname']
   description = params['description']
@@ -186,7 +185,7 @@ end
 #
 # @see Model#delete_product
 # @see Model#notice
-post('/product/:id/delete') do
+post('/products/:id/delete') do
   id = params['id']
   delete_product(id)
   
@@ -199,7 +198,7 @@ end
 # @param [Integer] id, Product ID
 #
 # @see Model#get_username
-get('/product/:id/edit') do
+get('/products/:id/edit') do
   @username = get_username(session[:id])
   @id = params[:id]
   slim(:edit)
@@ -215,7 +214,7 @@ end
 #
 # @see Model#update_product
 # @see Model#notice
-post('/product/:id/update') do
+post('/products/:id/update') do
   productname = params['new_productname']
   description = params['new_description']
   price = params['new_price'].to_f
@@ -233,7 +232,7 @@ end
 # @see Model#get_username
 # @see Model#get_cart_items
 # @see Model#calculate_cart_total
-get('/shoppingcart') do
+get('/cart') do
   redirect '/showlogin' unless session[:id]
   
   @username = get_username(session[:id])

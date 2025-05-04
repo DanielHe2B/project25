@@ -13,7 +13,7 @@ html lang="en"
         a href="/" Homepage
         - if @username
             a href="/logout" Log Out
-            a href="/shoppingcart" 
+            a href="/cart" 
               img id="cart" src="/img/cart.jpg" alt="shopping cart" width="24" height="24"/
             p Welcome, #{@username}!
         - else
@@ -23,8 +23,8 @@ html lang="en"
         - if flash[:notice]
             p.notice = flash[:notice]
         - if @username.to_s.downcase == "admin"
-          a href="/product/new" Add product
-          a href="/accounts" All accounts
+          a href="/products/new" Add product
+          a href="/users" All accounts
 
 
 
