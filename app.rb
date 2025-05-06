@@ -233,7 +233,7 @@ end
 # @see Model#get_cart_items
 # @see Model#calculate_cart_total
 get('/carts') do
-  redirect '/showlogin' unless session[:id]
+  redirect '/login' unless session[:id]
   
   @username = get_username(session[:id])
   @cart_items = get_cart_items(session[:id])
@@ -270,7 +270,7 @@ end
 # @see Model#notice
 # @see Model#failed
 post('/carts/:id/update') do
-  redirect '/showlogin' unless session[:id]
+  redirect '/login' unless session[:id]
   
   cart_item_id = params['id']
   quantity = params['quantity'].to_i
