@@ -15,14 +15,14 @@ include Model
 # - Requires login for private routes
 # - Requires admin access for admin-only routes
 before do
-  public_routes = ['/', '/showlogin', '/login', '/register', '/users', '/users/new']
-  admin_routes = ['/accounts', '/products/new', '/products/create', '/products/edit']
+  public_routes = ['/', '/login', '/register', '/users', '/users/new']
+  admin_routes = ['/users', '/products/new', '/products/create', '/products/edit']
 
   if request.request_method == "POST" && (request.path_info == "/users" || request.path_info == "/users/new")
     pass
   elsif !public_routes.include?(request.path_info) && !session[:id]
     notice("Unable to reach this site, try logging in")
-    redirect('/showlogin')
+    redirect('/login')
   elsif admin_routes.any? { |route| request.path_info.start_with?(route) } ||
         (request.request_method == "POST" && 
          (request.path_info.include?('/products/') || 
@@ -46,7 +46,7 @@ end
 
 # Display Login Form
 #
-get('/showlogin') do
+get('/login') do
   slim(:login)
 end
 
@@ -77,7 +77,7 @@ post('/login') do
 
   if username.empty? || password.empty?
     failed("Please put fill all the boxes")
-    redirect('/showlogin')
+    redirect('/login')
   end
 
   user_id = authenticate_user(username, password)
@@ -88,7 +88,7 @@ post('/login') do
     redirect('/')
   else
     failed("Invalid username or password")
-    redirect('/showlogin')
+    redirect('/login')
   end
 end
 
@@ -100,7 +100,7 @@ end
 #
 # @see Model#register_user
 # @see Model#validera
-post('/users') do
+post('/register') do
   username = params[:username]
   password = params[:password]
   password_confirm = params[:password_confirm]
@@ -132,7 +132,7 @@ end
 #
 # @see Model#delete_user
 # @see Model#notice
-post('/user/:id/delete') do 
+post('/users/:id/delete') do 
   id = params['id']
   delete_user(id)
   notice("user successfully removed")
@@ -232,7 +232,7 @@ end
 # @see Model#get_username
 # @see Model#get_cart_items
 # @see Model#calculate_cart_total
-get('/cart') do
+get('/carts') do
   redirect '/showlogin' unless session[:id]
   
   @username = get_username(session[:id])
@@ -249,8 +249,8 @@ end
 #
 # @see Model#add_to_cart
 # @see Model#notice
-post('/add_to_cart/:id') do
-  redirect '/showlogin' unless session[:id]
+post('/carts/:id') do
+  redirect '/login' unless session[:id]
   
   product_id = params['id']
   quantity = params['quantity'] ? params['quantity'].to_i : 1
@@ -268,15 +268,19 @@ end
 #
 # @see Model#update_cart_item
 # @see Model#notice
-post('/update-cart/:id') do
+# @see Model#failed
+post('/carts/:id/update') do
   redirect '/showlogin' unless session[:id]
   
   cart_item_id = params['id']
   quantity = params['quantity'].to_i
   
-  update_cart_item(cart_item_id, session[:id], quantity)
-  notice("Shopping cart successfully updated")
-  redirect('/shoppingcart')
+  if update_cart_item(cart_item_id, session[:id], quantity)
+    notice("Shopping cart successfully updated")
+  else
+    failed("You do not have permission to update this item")
+  end
+  redirect('/carts')
 end
 
 # Remove Item from Cart
@@ -285,11 +289,15 @@ end
 #
 # @see Model#remove_from_cart
 # @see Model#notice
-post('/remove-from-cart/:id') do
-  redirect '/showlogin' unless session[:id]
+# @see Model#failed
+post('/carts/:id/delete') do
+  redirect '/login' unless session[:id]
   
   cart_item_id = params['id']
-  remove_from_cart(cart_item_id, session[:id])
-  notice("Product sucessfully removed from shopping cart")
-  redirect('/shoppingcart')
+  if remove_from_cart(cart_item_id, session[:id])
+    notice("Product successfully removed from shopping cart")
+  else
+    failed("You do not have permission to remove this item")
+  end
+  redirect('/carts')
 end

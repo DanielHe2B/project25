@@ -13,12 +13,12 @@ html lang="en"
         a href="/" Homepage
         - if @username
             a href="/logout" Log Out
-            a href="/cart" 
+            a href="/carts" 
               img id="cart" src="/img/cart.jpg" alt="shopping cart" width="24" height="24"/
             p Welcome, #{@username}!
         - else
-            a href="/showlogin" Log In
-            a href="/showlogin" 
+            a href="/login" Log In
+            a href="/login" 
               img id="cart" src="/img/cart.jpg" alt="shopping cart" width="24" height="24"/ 
         - if flash[:notice]
             p.notice = flash[:notice]

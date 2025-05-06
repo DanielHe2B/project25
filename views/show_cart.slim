@@ -19,12 +19,12 @@ h2 Your Shopping Cart
             = item['productname']
           th #{item['price'].to_i} kr
           td
-            form action="/update-cart/#{item['id']}" method="POST"
+            form action="/carts/#{item['id']}/update" method="POST"
               input type="number" name="quantity" value="#{item['quantity']}" min="1"
               button type="submit" Update
           td #{item['price'].to_i * item['quantity']} kr
           td
-            form action="/remove-from-cart/#{item['id']}" method="POST"
+            form action="/carts/#{item['id']}/delete" method="POST"
               button type="submit" class="delete-btn" Remove
     tfoot
       tr

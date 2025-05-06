@@ -7,7 +7,7 @@ div clas="varor"
       p.price #{product['price']} kr
       p = product['description']
     - if @username
-        form action="/add_to_cart/#{product['id']}" method="POST"
+        form action="/carts/#{product['id']}" method="POST"
           input type="number" name="quantity" value="1" min="1" max="10"
           button type="submit" Add to cart
     - if @username.to_s.downcase == "admin"

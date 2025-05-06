@@ -240,22 +240,28 @@ module Model
   # @param cart_item_id [Integer] the cart item ID
   # @param user_id [Integer] the user's ID
   # @param quantity [Integer] the new quantity
+  # @return [Boolean] true if update succeeded, false if ownership verification failed
   def update_cart_item(cart_item_id, user_id, quantity)
     db = connect_to_db('db/slutprojekt.db')
+    return false unless cart_item_belongs_to_user?(cart_item_id, user_id)
     if quantity <= 0
       remove_from_cart(cart_item_id, user_id)
     else
       db.execute("UPDATE cart_items SET quantity = ? WHERE id = ? AND user_id = ?", [quantity, cart_item_id, user_id])
     end
+    true
   end
 
   # Removes an item from the cart.
   #
   # @param cart_item_id [Integer] the cart item ID
   # @param user_id [Integer] the user's ID
+  # @return [Boolean] true if removal succeeded, false if ownership verification failed
   def remove_from_cart(cart_item_id, user_id)
     db = connect_to_db('db/slutprojekt.db')
+    return false unless cart_item_belongs_to_user?(cart_item_id, user_id)
     db.execute("DELETE FROM cart_items WHERE id = ? AND user_id = ?", [cart_item_id, user_id])
+    true
   end
 
   # Calculates the total cost of the shopping cart.
@@ -288,4 +294,17 @@ module Model
       { success: false, message: "Failed to create user" }
     end
   end
+
+  # Verifies if a cart item belongs to the specified user.
+  #
+  # @param cart_item_id [Integer] the ID of the cart item to check
+  # @param user_id [Integer] the ID of the user
+  # @return [Boolean] true if the cart item belongs to the user, false otherwise
+  def cart_item_belongs_to_user?(cart_item_id, user_id)
+    return false unless cart_item_id && user_id
+    
+    db = connect_to_db('db/slutprojekt.db')
+    result = db.get_first_row("SELECT id FROM cart_items WHERE id = ? AND user_id = ?", [cart_item_id, user_id])
+    !result.nil?
+  end  
 end
